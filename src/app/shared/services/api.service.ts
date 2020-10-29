@@ -12,7 +12,7 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient) {}
 
-  gerCars(): Observable<Car[]> {
+  getCars(): Observable<Car[]> {
     return this.httpClient.get<Car[]>(`${this.url}/`);
   }
 }
