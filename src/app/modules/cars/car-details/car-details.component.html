@@ -1,0 +1,90 @@
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+
+<div class="wrapper">
+  <form class="needs-validation" (submit)="onSubmit()">
+    <h1 class="text-center mb-4">
+      {{ (isNew ? "Add New" : "Edit") + " Car" }}
+    </h1>
+
+    <!-- Make & Model -->
+    <div class="row">
+      <!-- Make -->
+      <div class="col-md-6 mb-3">
+        <label for="make">Make</label>
+        <input
+          type="text"
+          id="make"
+          class="form-control"
+          [(ngModel)]="car.make"
+          name="make"
+          required
+        />
+        <div class="invalid-feedback">Valid make is required.</div>
+      </div>
+      <!-- Model -->
+      <div class="col-md-6 mb-3">
+        <label for="model">Model</label>
+        <input
+          type="text"
+          id="model"
+          class="form-control"
+          [(ngModel)]="car.model"
+          name="model"
+          required
+        />
+        <div class="invalid-feedback">Valid model is required.</div>
+      </div>
+    </div>
+
+    <!-- Color & Price -->
+    <div class="row">
+      <!-- Color -->
+      <div class="col-md-6 mb-3">
+        <label for="color">Color</label>
+        <input
+          type="text"
+          id="color"
+          class="form-control"
+          [(ngModel)]="car.color"
+          name="color"
+          required
+        />
+        <div class="invalid-feedback">Valid Color is required.</div>
+      </div>
+      <!-- Price -->
+      <div class="col-md-6 mb-3">
+        <label for="price">Price</label>
+        <input
+          type="number"
+          id="price"
+          class="form-control"
+          [(ngModel)]="car.price"
+          name="price"
+          required
+        />
+        <div class="invalid-feedback">Valid price is required.</div>
+      </div>
+    </div>
+
+    <!-- Image URL -->
+    <div class="mb-4">
+      <label for="imgUrl">Image URL</label>
+      <input
+        type="text"
+        id="imgUrl"
+        class="form-control"
+        [(ngModel)]="car.imgUrl"
+        name="imgUrl"
+        required
+      />
+      <div class="invalid-feedback">Valid car image URL is required.</div>
+    </div>
+
+    <hr class="mb-4" />
+
+    <!-- Submit Button -->
+    <button class="btn btn-success btn-lg btn-block" type="submit">
+      Submit
+    </button>
+  </form>
+</div>

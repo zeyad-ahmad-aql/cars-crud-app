@@ -1,8 +1,9 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 
 import { ApiService } from 'src/app/shared/services/api.service';
 import { Car } from 'src/app/shared/models/car.model';
-import { Subject } from 'rxjs';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -14,29 +15,38 @@ export class CarsComponent implements OnInit, OnDestroy {
   faPlus = faPlus;
   isLoading = true;
   cars: Car[];
-  // We use this trigger because fetching the list of persons can be quite long,
-  // thus we ensure the data is fetched before rendering
-  dtTrigger = new Subject<null>();
+  subscriptionsArr: Subscription[] = [];
 
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.apiService.getCars().subscribe(
-      (res) => {
-        this.cars = res;
-        this.dtTrigger.next();
-        this.isLoading = false;
-      },
-      (error) => {
-        console.log(error);
-        this.isLoading = false;
-      }
+    this.subscriptionsArr.push(
+      this.apiService.getAllCars().subscribe(
+        (res) => {
+          this.cars = res;
+          this.isLoading = false;
+        },
+        (error) => {
+          console.log(error);
+          this.isLoading = false;
+        }
+      )
     );
   }
 
-  onAddClicked(): void {}
+  onAddClicked(): void {
+    this.router.navigate(['new'], { relativeTo: this.activatedRoute });
+  }
 
-  onEditCar(): void {}
+  onEditCar(index: number): void {
+    this.router.navigate([this.cars[index]._id], {
+      relativeTo: this.activatedRoute,
+    });
+  }
 
   onDeleteCar(index: number): void {
     this.isLoading = true;
@@ -45,7 +55,6 @@ export class CarsComponent implements OnInit, OnDestroy {
       (res) => {
         this.cars.splice(index, 1);
         this.isLoading = false;
-        this.dtTrigger.next();
       },
       (error) => {
         console.log(error);
@@ -55,7 +64,7 @@ export class CarsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // Do not forget to unsubscribe the event
-    this.dtTrigger.unsubscribe();
+    for (const subscription of this.subscriptionsArr)
+      subscription.unsubscribe();
   }
 }

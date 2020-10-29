@@ -20,6 +20,7 @@
         *ngFor="let car of cars; let i = index"
         [car]="car"
         [index]="i"
+        (editCar)="onEditCar($event)"
         (deleteCar)="onDeleteCar($event)"
       ></tr>
       <tr>

@@ -16,8 +16,16 @@ export class ApiService {
     return this.httpClient.post<Car>(`${this.url}/cars`, car);
   }
 
-  getCars(): Observable<Car[]> {
+  getCar(id: string): Observable<Car> {
+    return this.httpClient.get<Car>(`${this.url}/cars/${id}`);
+  }
+
+  getAllCars(): Observable<Car[]> {
     return this.httpClient.get<Car[]>(`${this.url}/cars`);
+  }
+
+  updateCar(car: Car): Observable<Car> {
+    return this.httpClient.put<Car>(`${this.url}/cars/${car._id}`, car);
   }
 
   deleteCar(id: string): Observable<any> {
