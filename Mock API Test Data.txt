@@ -1,22 +1,14 @@
 [
   {
     "_id": "1",
-    "make": "Fiat",
-    "model": "Doblo",
-    "price": 300000,
-    "color": "red",
-    "imgUrl": "https://media.hatla2eestatic.com/uploads/ncarmodel/6106/big-up_87f581ff7247e05d58069fe6fe0defa2.png"
+    "make": "Hyundai",
+    "model": "Accent RB",
+    "price": 242000,
+    "color": "grey",
+    "imgUrl": "https://media.hatla2eestatic.com/uploads/ncarmodel/6811/big-up_57a1abe330d0f02f705fd9a90f4ec0c4.png"
   },
   {
     "_id": "2",
-    "make": "Hyundai",
-    "model": "Accent RB",
-    "price": 242000,
-    "color": "grey",
-    "imgUrl": "https://media.hatla2eestatic.com/uploads/ncarmodel/6811/big-up_57a1abe330d0f02f705fd9a90f4ec0c4.png"
-  },
-  {
-    "_id": "3",
     "make": "Mercedes",
     "model": "A 180",
     "price": 570000,
@@ -24,7 +16,7 @@
     "imgUrl": "https://media.hatla2eestatic.com/uploads/ncarmodel/6555/big-up_8c6d5ca813712b695f122dcf73eb180c.png"
   },
   {
-    "_id": "4",
+    "_id": "3",
     "make": "Chevrolet",
     "model": "Cruze",
     "price": 340000,
@@ -32,7 +24,7 @@
     "imgUrl": "https://media.hatla2eestatic.com/uploads/ncarmodel/1892/big-up_8e183296e508eae4c4abd22a6fcfd320.png"
   },
   {
-    "_id": "5",
+    "_id": "4",
     "make": "BMW",
     "model": "218 i",
     "price": 648000,
@@ -40,7 +32,7 @@
     "imgUrl": "https://media.hatla2eestatic.com/uploads/ncarmodel/6738/big-up_26c31dab4e37c2b42f85b1ae4bd48627.jpg"
   },
   {
-    "_id": "6",
+    "_id": "5",
     "make": "Fiat",
     "model": "Doblo",
     "price": 300000,
@@ -48,35 +40,19 @@
     "imgUrl": "https://media.hatla2eestatic.com/uploads/ncarmodel/6106/big-up_87f581ff7247e05d58069fe6fe0defa2.png"
   },
   {
+    "_id": "6",
+    "make": "Mini",
+    "model": "Cooper",
+    "price": 640000,
+    "color": "beige",
+    "imgUrl": "https://media.hatla2eestatic.com/uploads/ncarmodel/5739/big-up_2ca659244c6b1a0c63a70f6e0c9960ff.png"
+  },
+  {
     "_id": "7",
-    "make": "Hyundai",
-    "model": "Accent RB",
-    "price": 242000,
-    "color": "grey",
-    "imgUrl": "https://media.hatla2eestatic.com/uploads/ncarmodel/6811/big-up_57a1abe330d0f02f705fd9a90f4ec0c4.png"
-  },
-  {
-    "_id": "8",
-    "make": "Mercedes",
-    "model": "A 180",
-    "price": 570000,
-    "color": "white",
-    "imgUrl": "https://media.hatla2eestatic.com/uploads/ncarmodel/6555/big-up_8c6d5ca813712b695f122dcf73eb180c.png"
-  },
-  {
-    "_id": "9",
-    "make": "Chevrolet",
-    "model": "Cruze",
-    "price": 340000,
-    "color": "black",
-    "imgUrl": "https://media.hatla2eestatic.com/uploads/ncarmodel/1892/big-up_8e183296e508eae4c4abd22a6fcfd320.png"
-  },
-  {
-    "_id": "10",
-    "make": "BMW",
-    "model": "218 i",
-    "price": 648000,
-    "color": "cyan",
-    "imgUrl": "https://media.hatla2eestatic.com/uploads/ncarmodel/6738/big-up_26c31dab4e37c2b42f85b1ae4bd48627.jpg"
+    "make": "Volvo",
+    "model": "XC 40",
+    "price": 855000,
+    "color": "dark grey",
+    "imgUrl": "https://media.hatla2eestatic.com/uploads/ncarmodel/6902/big-up_fb81ce9b063754034a260b248b6b0262.png"
   }
 ]
