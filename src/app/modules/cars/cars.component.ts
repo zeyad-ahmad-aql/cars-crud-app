@@ -1,9 +1,10 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 
 import { ApiService } from 'src/app/shared/services/api.service';
 import { Car } from 'src/app/shared/models/car.model';
+import { DataTableDirective } from 'angular-datatables';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -17,6 +18,11 @@ export class CarsComponent implements OnInit, OnDestroy {
   cars: Car[];
   subscriptionsArr: Subscription[] = [];
 
+  // Datatable Objects
+  @ViewChild(DataTableDirective, { static: false })
+  dtElement: DataTableDirective;
+  dtTrigger = new Subject();
+
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -28,7 +34,19 @@ export class CarsComponent implements OnInit, OnDestroy {
       this.apiService.getAllCars().subscribe(
         (res) => {
           this.cars = res;
-          this.isLoading = false;
+          if (this.dtElement.dtInstance)
+            this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+              // Destroy the table first
+              dtInstance.destroy();
+              // Call the dtTrigger to rerender again
+              this.dtTrigger.next();
+
+              this.isLoading = false;
+            });
+          else {
+            this.dtTrigger.next();
+            this.isLoading = false;
+          }
         },
         (error) => {
           console.log(error);
@@ -51,20 +69,31 @@ export class CarsComponent implements OnInit, OnDestroy {
   onDeleteCar(index: number): void {
     this.isLoading = true;
 
-    this.apiService.deleteCar(this.cars[index]._id).subscribe(
-      (res) => {
-        this.cars.splice(index, 1);
-        this.isLoading = false;
-      },
-      (error) => {
-        console.log(error);
-        this.isLoading = false;
-      }
+    this.subscriptionsArr.push(
+      this.apiService.deleteCar(this.cars[index]._id).subscribe(
+        (res) => {
+          this.cars.splice(index, 1);
+          this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+            // Destroy the table first
+            dtInstance.destroy();
+            // Call the dtTrigger to rerender again
+            this.dtTrigger.next();
+
+            this.isLoading = false;
+          });
+        },
+        (error) => {
+          console.log(error);
+          this.isLoading = false;
+        }
+      )
     );
   }
 
   ngOnDestroy(): void {
     for (const subscription of this.subscriptionsArr)
       subscription.unsubscribe();
+
+    this.dtTrigger.unsubscribe();
   }
 }

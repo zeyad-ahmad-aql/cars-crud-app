@@ -2,7 +2,7 @@
 
 <div class="container-fluid pt-2 px-0">
   <h1 class="text-center mb-3">Our Cars</h1>
-  <table class="table row-border hover">
+  <table datatable class="table row-border hover" [dtTrigger]="dtTrigger">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
@@ -30,7 +30,7 @@
         <td></td>
         <td></td>
         <td></td>
-        <td>
+        <td style="vertical-align: middle; height: 3rem">
           <button class="btn btn-success bold" (click)="onAddClicked()">
             Add New Car <fa-icon [icon]="faPlus"></fa-icon>
           </button>
