@@ -1,5 +1,13 @@
 <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
 
+<button
+  id="add-button"
+  class="btn btn-success btn-lg bold"
+  (click)="onAddClicked()"
+>
+  <fa-icon [icon]="faPlus"></fa-icon>&nbsp;&nbsp;Add New Car
+</button>
+
 <div class="container-fluid pt-2 px-0">
   <h1 class="text-center mb-3">Our Cars</h1>
   <table datatable class="table row-border hover" [dtTrigger]="dtTrigger">
@@ -23,19 +31,6 @@
         (editCar)="onEditCar($event)"
         (deleteCar)="onDeleteCar($event)"
       ></tr>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td style="vertical-align: middle; height: 3rem">
-          <button class="btn btn-success bold" (click)="onAddClicked()">
-            Add New Car <fa-icon [icon]="faPlus"></fa-icon>
-          </button>
-        </td>
-      </tr>
     </tbody>
   </table>
 </div>
