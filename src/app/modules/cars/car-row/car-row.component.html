@@ -10,3 +10,12 @@
     class="img-thumbnail"
   />
 </td>
+<td>
+  <button class="btn btn-warning" (click)="onEditClicked()">
+    Edit <fa-icon [icon]="faEdit"></fa-icon>
+  </button>
+  &nbsp;&nbsp;&nbsp;
+  <button class="btn btn-danger" (click)="onDeleteClicked()">
+    Delete <fa-icon [icon]="faTrashAlt"></fa-icon>
+  </button>
+</td>

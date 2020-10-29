@@ -2,7 +2,7 @@
 
 <div class="container-fluid pt-2 px-0">
   <h1 class="text-center mb-3">Our Cars</h1>
-  <table datatable class="table row-border hover">
+  <table class="table row-border hover">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
@@ -11,6 +11,7 @@
         <th scope="col">Color</th>
         <th scope="col">Price</th>
         <th scope="col">Image</th>
+        <th scope="col">Controls</th>
       </tr>
     </thead>
     <tbody>
@@ -19,7 +20,21 @@
         *ngFor="let car of cars; let i = index"
         [car]="car"
         [index]="i"
+        (deleteCar)="onDeleteCar($event)"
       ></tr>
+      <tr>
+        <th scope="row"></th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <button class="btn btn-success bold" (click)="onAddClicked()">
+            Add New Car <fa-icon [icon]="faPlus"></fa-icon>
+          </button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
