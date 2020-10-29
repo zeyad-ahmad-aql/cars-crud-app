@@ -1,0 +1,12 @@
+<th scope="row">{{ index + 1 }}</th>
+<td>{{ car.make }}</td>
+<td>{{ car.model }}</td>
+<td>{{ car.color }}</td>
+<td>{{ car.price | number }}</td>
+<td>
+  <img
+    [src]="car.imgUrl"
+    [alt]="car.color + ' ' + car.make + ' ' + car.model + ' Image'"
+    class="img-thumbnail"
+  />
+</td>

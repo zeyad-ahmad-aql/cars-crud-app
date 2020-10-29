@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { Car } from 'src/app/shared/models/car.model';
 
 @Component({
   selector: 'app-cars',
@@ -9,8 +10,20 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CarsComponent implements OnInit {
   isLoading = true;
+  cars: Car[];
 
-  constructor() {}
+  constructor(private apiService: ApiService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.apiService.getCars().subscribe(
+      (res) => {
+        this.cars = res;
+        this.isLoading = false;
+      },
+      (error) => {
+        console.log(error);
+        this.isLoading = false;
+      }
+    );
+  }
 }

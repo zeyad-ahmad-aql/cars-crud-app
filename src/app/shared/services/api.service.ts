@@ -13,6 +13,6 @@ export class ApiService {
   constructor(private httpClient: HttpClient) {}
 
   getCars(): Observable<Car[]> {
-    return this.httpClient.get<Car[]>(`${this.url}/`);
+    return this.httpClient.get<Car[]>(`${this.url}/cars`);
   }
 }

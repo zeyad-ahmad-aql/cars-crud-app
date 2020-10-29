@@ -1,1 +1,25 @@
 <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+
+<div class="container-fluid pt-2 px-0">
+  <h1 class="text-center mb-3">Our Cars</h1>
+  <table datatable class="table row-border hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Make</th>
+        <th scope="col">Model</th>
+        <th scope="col">Color</th>
+        <th scope="col">Price</th>
+        <th scope="col">Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        car-row
+        *ngFor="let car of cars; let i = index"
+        [car]="car"
+        [index]="i"
+      ></tr>
+    </tbody>
+  </table>
+</div>
